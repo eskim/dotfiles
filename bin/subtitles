@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'thor'
+
+module Eskim
+
+class Subtitles < Thor
+
+  map "-c" => :smi2srt
+
+  desc "smi2srt [FILE]", "convert sami to srt file"
+  def smi2srt
+    puts "smi2srt"
+  end
+
+end
+
+end
+
+
+Eskim::Subtitles.start
