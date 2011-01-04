@@ -7,11 +7,49 @@ module Eskim
 
 class Subtitles < Thor
 
+    SMI_RE = %r(
+      ^<sync\sstart=(\d+)> <p[^>]+> (?:\r?\n)? ( \&nbsp;(?=\r?\n) | (?<=\n).+?(?=\r?\n)  )
+    )xim
+
+
   map "-c" => :smi2srt
 
   desc "smi2srt [FILE]", "convert sami to srt file"
-  def smi2srt
-    puts "smi2srt"
+  def smi2srt(name)
+    smi = open(name).read
+    raw = smi.scan(SMI_RE)
+    
+    
+    smi_data = []
+    raw.each_with_index do |d, idx|
+      if d[1] == "&nbsp;"
+        s, e = raw[idx-1][0].to_i, d[0].to_i
+        smi_data[-1][:duration] = (e-s)/1000.0
+      else
+        sub = d[1]
+        sub.gsub!(/<br\s*\/?>/i, "\n") # br -> \n
+        sub.gsub!(/<[^>]+?>/i, "") # strip tags
+        
+        smi_data << {:start => d[0].to_i / 1000.0, :subtitle => sub}
+      end
+    end
+
+
+    srt_data = smi_data.map.with_index do |d, i|
+      df = ->(n){ "%02d:%02d:%02d,%03d" % [(n/3600), (n%3600)/60, (n%60), (n*1000)%1000] }
+      row = "#{i+1}"
+      row << "\r\n"
+      row << df[d[:start]]
+      row << " --> "
+      row << df[d[:start]+d[:duration]]
+      row << "\r\n"
+      row << d[:subtitle].gsub(/\n/, "\r\n")
+      row << "\r\n"
+    end
+
+    STDOUT.sync = true
+    puts srt_data.join("\r\n")
+
   end
 
 end
