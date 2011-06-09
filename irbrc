@@ -21,3 +21,30 @@
 # j
 # jrequire 'rexml/document'
 
+require 'rubygems'
+require 'open-uri'
+require 'nokogiri'
+
+
+begin
+  require 'ap'
+
+  IRB::Irb.class_eval do
+    def output_value
+      ap @context.last_value, {:indent => -4}
+    end 
+  end
+
+# doesn't work
+#   AwesomePrint.defaults = {
+#     :indent => -4
+#   }
+
+rescue
+  require 'pp'
+end
+
+def open_nokogiri(url)
+  doc = Nokogiri::HTML(open(url).read)
+end
+

@@ -16,6 +16,10 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 
+# auto jump
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
 
 # completion
 
