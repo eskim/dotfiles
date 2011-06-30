@@ -9,6 +9,10 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 [[ $TERM == eterm-color ]] && export TERM=xterm
 
 
+# ec2
+if [ -f ~/.bash_ec2 ]; then
+    . ~/.bash_ec2
+fi
 
 # alias
 if [ -f ~/.bash_aliases ]; then
