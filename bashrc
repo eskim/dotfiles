@@ -10,20 +10,16 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 
 
 # ec2
-if [ -f ~/.bash_ec2 ]; then
-    . ~/.bash_ec2
-fi
+[ -f ~/.bash_ec2 ] && source ~/.bash_ec2
 
 # alias
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-# auto jump
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
-fi
 
 # completion
 
@@ -33,15 +29,14 @@ if [ -f $git_completion ]; then
 fi
 
 
-
-
-
 # method missing
 trap 'if ! type -t $BASH_COMMAND >/dev/null; then ~/.bin/shell-method-missing $BASH_COMMAND; fi' DEBUG
 
 
 #autojump
-
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
 
 _autojump() 
 {
@@ -75,3 +70,11 @@ if [[ ! $PROMPT_COMMAND =~ autojump ]]; then
 fi 
 alias jumpstat="autojump --stat"
 function j { new_path="$(autojump $@)";if [ -n "$new_path" ]; then echo -e "\\033[31m${new_path}\\033[0m"; cd "$new_path";else false; fi }
+
+
+
+
+
+
+export PATH=~/.bin:/opt/local/bin:/opt/local/sbin:/opt/local/flex_sdk_3.5/bin:$PATH
+
