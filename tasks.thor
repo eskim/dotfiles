@@ -9,6 +9,7 @@ class Ec2 < Thor
     servers = []
     results.split("\n").each do |line|
       next if line  =~ /^RESER/
+      next if line  =~ /terminated/
       
       servers << line.split[3]
       say "#{servers.size}. #{servers.last}"

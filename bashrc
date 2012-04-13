@@ -1,3 +1,4 @@
+echo $TERM
 [ -z "$PS1" ] && return
 
 export HISTCONTROL=ignoredups

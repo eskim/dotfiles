@@ -48,3 +48,6 @@ def open_nokogiri(url)
   doc = Nokogiri::HTML(open(url).read)
 end
 
+def upcase_png(f)
+  %x(mv #{f} #{f.gsub(/png/, "PNG")})
+end
