@@ -1,6 +1,7 @@
 
 # alias ls='ls -G'
-alias ll='ls -l'
+alias ls='ls -G'
+alias ll='ls -la'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -8,7 +9,8 @@ alias l='ls -CF'
 # git
 # from https://github.com/mislav/dotfiles/blob/master/bash_aliases
 
-alias gst='git status -sb'
+alias gst0='git status -sb'
+alias gst='git status'
 alias gl='git pull'
 alias gp='git push'
 alias gd='git diff'
