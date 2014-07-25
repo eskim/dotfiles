@@ -43,7 +43,7 @@ git_branch() {
   fi
 }
 
-PS1="\[$COLOR_WHITE\]\n\W "          # basename of pwd
+PS1="\[$COLOR_WHITE\]\W "          # basename of pwd
 PS1+="\[\$(git_color)\]"        # colors git status
 PS1+="\$(git_branch)"           # prints current branch
 PS1+="\[$COLOR_WHITE\]\$\[$COLOR_RESET\] "   # '#' for root, else '$'
@@ -86,4 +86,13 @@ fi
 
 export PATH=~/bin:/usr/local/bin:/opt/local/sbin:$PATH
 
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+
+
 eval "$(fasd --init auto)"
+
+
+
