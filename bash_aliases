@@ -17,6 +17,11 @@ alias gd='git diff'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gb='git branch -v'
+alias gpo='git push origin HEAD'
+alias gm='git merge --no-ff'
+alias gb='git branch'
+alias gbb='git branch | peco'
+alias gcoo='git checkout $(gbb)'
 
 function gco {
   if [ -z "$1" ]; then
