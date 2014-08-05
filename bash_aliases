@@ -33,3 +33,5 @@ function gco {
 
 # ruby/rails
 alias r='rails'
+
+alias tidy="tidy -raw -q -i --doctype omit --show-body-only true"

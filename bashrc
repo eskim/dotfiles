@@ -83,8 +83,9 @@ fi
 
 
 
-
+export ANDROID_HOME="/Users/eskim/Library/adt-bundle-mac-x86_64-20130522/sdk"
 export PATH=~/bin:/usr/local/bin:/opt/local/sbin:$PATH
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
