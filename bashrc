@@ -84,7 +84,7 @@ fi
 
 
 export ANDROID_HOME="/Users/eskim/Library/adt-bundle-mac-x86_64-20130522/sdk"
-export PATH=~/bin:/usr/local/bin:/opt/local/sbin:$PATH
+export PATH=~/bin:/usr/local/bin:/opt/local/sbin:$PATH:$HOME/.cabal/bin
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 # rbenv
@@ -97,3 +97,7 @@ eval "$(fasd --init auto)"
 
 
 
+export GOPATH="$HOME/.go"
+
+
+export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/

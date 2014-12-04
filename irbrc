@@ -24,6 +24,10 @@
 require 'rubygems'
 require 'open-uri'
 require 'nokogiri'
+require 'json'
+require 'file'
+require 'rest-client'
+
 
 
 begin
@@ -51,3 +55,9 @@ end
 def upcase_png(f)
   %x(mv #{f} #{f.gsub(/png/, "PNG")})
 end
+
+def read(path)
+  open(File.expand_path(path)).read
+end
+
+puts 'here'

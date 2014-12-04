@@ -31,7 +31,15 @@ function gco {
   fi
 }
 
+
+# ssh
+
+alias sshh='ssh $(cat ~/.ssh/config  | grep "Host " | cut -c6- | peco)'
+
 # ruby/rails
 alias r='rails'
 
 alias tidy="tidy -raw -q -i --doctype omit --show-body-only true"
+
+
+alias psci="psci --single-line-mode"
