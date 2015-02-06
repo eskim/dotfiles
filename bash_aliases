@@ -22,6 +22,7 @@ alias gm='git merge --no-ff'
 alias gb='git branch'
 alias gbb='git branch | peco'
 alias gcoo='git checkout $(gbb)'
+alias gcob='git checkout -b'
 
 function gco {
   if [ -z "$1" ]; then
@@ -31,6 +32,8 @@ function gco {
   fi
 }
 
+# files
+alias ff="find * -type f -not -path '*/\.*' | peco"
 
 # ssh
 
@@ -43,3 +46,4 @@ alias tidy="tidy -raw -q -i --doctype omit --show-body-only true"
 
 
 alias psci="psci --single-line-mode"
+alias dotenv='env $(cat .env | xargs)'
