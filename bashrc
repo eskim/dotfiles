@@ -52,9 +52,6 @@ export PS1
 
 # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
-alias ls='ls -G'
-alias ll='ls -al -G'
-
 [[ $TERM == eterm-color ]] && export TERM=xterm
 
 export CLICOLOR=1
@@ -82,23 +79,25 @@ fi
 # trap 'if ! type -t $BASH_COMMAND >/dev/null; then ~/.bin/shell-method-missing $BASH_COMMAND; fi' DEBUG
 
 
-
-export ANDROID_HOME="/Users/eskim/Library/adt-bundle-mac-x86_64-20130522/sdk"
 export PATH=~/bin:/usr/local/bin:/opt/local/sbin:$PATH:$HOME/.cabal/bin
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+
+
+# android
+if [ -d "$HOME/Library/Android/sdk" ]; then
+  export ANDROID_HOME="$HOME/Library/Android/sdk"
+  export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+fi
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
+if [ -d "$HOME/.rbenv" ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
 
 eval "$(fasd --init auto)"
 
-
-
 export GOPATH="$HOME/.go"
-
 
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/
 

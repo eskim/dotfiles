@@ -1,7 +1,8 @@
 
-# alias ls='ls -G'
+
 alias ls='ls -G'
-alias ll='ls -la'
+alias ll='ls -al -G'
+# alias ls='ls -G'
 alias la='ls -A'
 alias l='ls -CF'
 
